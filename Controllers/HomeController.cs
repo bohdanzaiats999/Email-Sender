@@ -18,18 +18,16 @@ namespace WebApplication5.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult SendEmail()
         {
-
-
                 //From Address  
                 string FromAddress = "bohdan2131@gmail.com";
-                string FromAdressTitle = "Email from ASP.NET Core 1.1";
+                string FromAdressTitle = "Email from bohdan2131";
                 //To Address  
                 string ToAddress = "bohdanzaiats999@gmail.com";
                 string ToAdressTitle = "Microsoft ASP.NET Core";
-                string Subject = "Hello World - Sending email using ASP.NET Core 1.1";
-                string BodyContent = "ASP.NET Core was previously called ASP.NET 5. It was renamed in January 2016. It supports cross-platform frameworks ( Windows, Linux, Mac ) for building modern cloud-based internet-connected applications like IOT, web apps, and mobile back-end.";
+                string Subject = "Hello World";
+                string BodyContent = "This is Email sender created the greatest man - Bohdan Zaiats";
 
                 //Smtp Server  
                 string SmtpServer = "smtp.gmail.com";
@@ -48,15 +46,12 @@ namespace WebApplication5.Controllers
                 using (var client = new SmtpClient())
                 {
 
-                    client.Connect(SmtpServer, SmtpPortNumber, false);
-                    // Note: only needed if the SMTP server requires authentication  
-                    // Error 5.5.1 Authentication   
+                    client.Connect(SmtpServer, SmtpPortNumber, false);   
                     client.Authenticate("bohdan2131@gmail.com", "bohdan123");
                     client.Send(mimeMessage);
                     client.Disconnect(true);
                 }
             
-            ViewData["Message"] = "Your contact page.";
             return View();
         }
 
